@@ -8,4 +8,16 @@ import type { App } from '../app/api/[[...slugs]]/route'
 //     ? treaty(App).api
 //     : treaty<typeof App>('localhost:3000').api
 
-export const client = treaty<App>('localhost:3000').api
+// For client-side, use the current origin (protocol + host)
+// For server-side, use VERCEL_URL if available, otherwise localhost
+const getBaseUrl = () => {
+    if (typeof window !== 'undefined') {
+        return window.location.origin
+    }
+    if (process.env.VERCEL_URL) {
+        return `https://${process.env.NEXT_PUBLIC_APP_URL}`
+    }
+    return 'http://localhost:3000'
+}
+
+export const client = treaty<App>(getBaseUrl()).api
