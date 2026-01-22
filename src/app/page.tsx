@@ -3,7 +3,7 @@ import { useUsername } from "@/hooks/use-username";
 import { client } from "@/lib/client";
 import { useMutation } from "@tanstack/react-query";
 import { useRouter, useSearchParams } from "next/navigation";
-import { Suspense } from "react";
+import { Suspense, useState } from "react";
 
 const page = () => {
   return <Suspense fallback={<div>Loading...</div>}>
@@ -14,6 +14,7 @@ const page = () => {
 function Lobby() {
   const { username } = useUsername()
   const router = useRouter()
+  const [roomId, setRoomId] = useState("")
 
   const searchParams = useSearchParams()
   const wasDestroyed = searchParams.get("destroy") === "true"
@@ -86,6 +87,30 @@ function Lobby() {
                 "CREATE SECURE ROOM"
               )}
             </button>
+            <div className="flex items-center gap-2 my-4">
+              <div className="h-px bg-zinc-800 flex-1" />
+              <span className="text-xs text-zinc-500 font-mono">OR</span>
+              <div className="h-px bg-zinc-800 flex-1" />
+            </div>
+
+            <div className="space-y-2">
+              <label className="flex items-center text-zinc-500">Join via Room ID</label>
+              <input
+                value={roomId}
+                onChange={(e) => setRoomId(e.target.value)}
+                placeholder="Enter Room ID"
+                type="text"
+                className="w-full bg-black border border-zinc-800 focus:border-zinc-700 focus:outline-none transition-colors text-zinc-100 placeholder:text-zinc-700 p-3 text-sm"
+              />
+
+              <button
+                disabled={!roomId.trim()}
+                onClick={() => router.push(`/room/${roomId}`)}
+                className="w-full bg-zinc-800 text-zinc-400 p-3 text-sm font-bold hover:bg-zinc-700 hover:text-zinc-200 transition-colors cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                JOIN ROOM
+              </button>
+            </div>
           </div>
         </div>
       </div>
