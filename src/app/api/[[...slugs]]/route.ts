@@ -3,9 +3,7 @@ import { Elysia, t } from 'elysia'
 import { nanoid } from 'nanoid'
 import { authMiddleWare } from './auth';
 import { z } from 'zod'
-import { error } from 'console';
 import { Message, realtime } from '@/lib/realtime';
-import { realpath } from 'fs';
 
 const ROOM_TTL_SECONDS = 60 * 10; //after 600 sec room will be auto deleted
 

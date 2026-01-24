@@ -12,7 +12,7 @@ const generateUsername = () => {
 }
 
 export const useUsername = () => {
-  const [username, setUsername] = useState("Abhiraj")
+  const [username, setUsername] = useState("")
 
   // we want that a use get unique username same no matter how many time they referesh, so insted of using only state(change after refresh) we will use useffect so that it only change when we render page
   useEffect(() => {
