@@ -2,6 +2,7 @@
 import { useUsername } from "@/hooks/use-username";
 import { client } from "@/lib/client";
 import { useMutation } from "@tanstack/react-query";
+import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Suspense, useState } from "react";
 
@@ -52,6 +53,19 @@ function Lobby() {
           </div>
         )}
 
+      {/* Nav Buttons */}
+
+        <div className="absolute top-4 right-15 flex items-center gap-4">
+          <Link href="/docs" className="text-zinc-500 hover:text-zinc-200 text-sm transition-colors">
+              Docs
+          </Link>
+
+          <Link href="https://github.com/Abhiraj35/Real-time-chat-app" target="_blank"
+            rel="noopener noreferrer" className="text-zinc-500 hover:text-zinc-200 text-sm transition-colors">
+              GitHub
+          </Link>
+
+        </div>
 
         <div className="text-center space-y-2">
           <h1 className="text-2xl font-bold tracking-tight text-green-500">
