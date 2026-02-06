@@ -1,4 +1,5 @@
 'use client'
+import { ThemeToggle } from "@/components/theme-toggle";
 import { useUsername } from "@/hooks/use-username";
 import { client } from "@/lib/client";
 import { useMutation } from "@tanstack/react-query";
@@ -64,7 +65,7 @@ function Lobby() {
             rel="noopener noreferrer" className="text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-200 text-sm transition-colors">
               GitHub
           </Link>
-
+          <ThemeToggle />
         </div>
 
         <div className="text-center space-y-2">
