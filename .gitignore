@@ -40,4 +40,4 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-DOCS_FIXES_README.md
+DEVELOPMENT_LOG.md
