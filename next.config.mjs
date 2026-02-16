@@ -9,8 +9,8 @@ const withMDX = createMDX({
   mdxOptions: {
     rehypeCodeOptions: {
       themes: {
-        light: 'github-light',
-        dark: 'github-dark',
+        light: 'catppuccin-latte',
+        dark: 'catppuccin-mocha',
       },
     },
   },
