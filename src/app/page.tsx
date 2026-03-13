@@ -48,7 +48,7 @@ export default function LandingPage() {
                         : 'bg-transparent border-transparent'
                 }`}
             >
-                <div className="max-w-[1100px] mx-auto px-4 sm:px-6 h-full flex items-center justify-between">
+                <div className="max-w-275 mx-auto px-4 sm:px-6 h-full flex items-center justify-between">
                     <Link href="/" className="flex items-center gap-1.5 text-lg font-semibold tracking-tight">
                         <span className="text-green-500">&gt;</span>
                         <span className="text-foreground">flux</span>
@@ -57,11 +57,11 @@ export default function LandingPage() {
                     <nav className="hidden md:flex items-center gap-6">
                         <a href="#how-it-works" className="text-xs font-medium text-zinc-500 hover:text-foreground uppercase tracking-widest transition-colors relative group">
                             how it works
-                            <span className="absolute bottom-[-4px] left-0 w-full h-px bg-green-500 scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span>
+                            <span className="absolute -bottom-1 left-0 w-full h-px bg-green-500 scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span>
                         </a>
                         <a href="#features" className="text-xs font-medium text-zinc-500 hover:text-foreground uppercase tracking-widest transition-colors relative group">
                             features
-                            <span className="absolute bottom-[-4px] left-0 w-full h-px bg-green-500 scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span>
+                            <span className="absolute -bottom-1 left-0 w-full h-px bg-green-500 scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span>
                         </a>
                     </nav>
 
@@ -82,7 +82,7 @@ export default function LandingPage() {
             <main className="grow">
                 {/* Hero Section */}
                 <section className="pt-24 md:pt-40 pb-24 px-4">
-                    <div className="max-w-[760px] mx-auto text-center flex flex-col items-center">
+                    <div className="max-w-190 mx-auto text-center flex flex-col items-center">
                         <span className="inline-block text-[0.7rem] font-medium tracking-[0.15em] uppercase text-green-400 mb-6 animate-fade-up" style={{ animationDelay: '100ms' }}>
                             [ ephemeral by design ]
                         </span>
@@ -91,7 +91,7 @@ export default function LandingPage() {
                             Chat that disappears.
                         </h1>
 
-                        <p className="text-base text-zinc-500 max-w-[520px] mx-auto leading-relaxed mb-12 animate-fade-in" style={{ animationDelay: '350ms' }}>
+                        <p className="text-base text-zinc-500 max-w-130 mx-auto leading-relaxed mb-12 animate-fade-in" style={{ animationDelay: '350ms' }}>
                             Create a private room. Share the ID.{' '}
                             <br className="hidden sm:block" />Everything vanishes in 10 minutes — messages, history, traces.
                         </p>
@@ -99,8 +99,10 @@ export default function LandingPage() {
                         <div className="flex flex-row items-center justify-center gap-3 animate-fade-up" style={{ animationDelay: '500ms' }}>
                             <Link 
                                 href="/lobby" 
-                                className="inline-flex items-center gap-2 bg-green-500 hover:bg-green-600 text-black font-semibold text-[0.9375rem] px-6 py-3 rounded-md shadow-[0_0_24px_rgba(34,197,94,0.3)] hover:shadow-[0_0_32px_rgba(34,197,94,0.5)] transition-all duration-200 hover:scale-[1.02]"
+                                className="btn-bracket inline-flex items-center gap-2 bg-zinc-950/80 text-green-400 font-semibold text-[0.9375rem] px-7 py-3"
                             >
+                                <span className="bc-tr" />
+                                <span className="bc-bl" />
                                 Create a Room
                                 <ArrowRight className="w-4 h-4" />
                             </Link>
@@ -109,7 +111,7 @@ export default function LandingPage() {
                                 className="group inline-flex items-center gap-1.5 text-sm text-zinc-500 hover:text-foreground px-4 py-3 transition-colors duration-150"
                             >
                                 See how it works
-                                <ArrowDown className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-y-[3px]" />
+                                <ArrowDown className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-y-0.75" />
                             </a>
                         </div>
 
@@ -121,7 +123,7 @@ export default function LandingPage() {
 
                 {/* How It Works */}
                 <section id="how-it-works" className="py-16 md:py-24 px-4 scroll-mt-14">
-                    <div className="max-w-[1100px] mx-auto">
+                    <div className="max-w-275 mx-auto">
                         <div className="text-center mb-16 animate-on-scroll">
                             <span className="block text-[0.7rem] font-medium tracking-[0.15em] uppercase text-green-400 mb-4">
                                 [ how it works ]
@@ -139,7 +141,7 @@ export default function LandingPage() {
                                     01
                                 </div>
                                 <h3 className="text-base font-medium text-foreground mb-2 tracking-tight">Create a room.</h3>
-                                <p className="text-sm text-zinc-500 leading-relaxed max-w-[220px] text-left">
+                                <p className="text-sm text-zinc-500 leading-relaxed max-w-55 text-left">
                                     One click. No account, no email, no password.
                                 </p>
                             </div>
@@ -149,7 +151,7 @@ export default function LandingPage() {
                                     02
                                 </div>
                                 <h3 className="text-base font-medium text-foreground mb-2 tracking-tight">Share the ID.</h3>
-                                <p className="text-sm text-zinc-500 leading-relaxed max-w-[220px] text-left">
+                                <p className="text-sm text-zinc-500 leading-relaxed max-w-55 text-left">
                                     Send the room ID to whoever needs to be there. Anyone with it can join.
                                 </p>
                             </div>
@@ -159,7 +161,7 @@ export default function LandingPage() {
                                     03
                                 </div>
                                 <h3 className="text-base font-medium text-foreground mb-2 tracking-tight">It&apos;s gone in 10.</h3>
-                                <p className="text-sm text-zinc-500 leading-relaxed max-w-[220px] text-left">
+                                <p className="text-sm text-zinc-500 leading-relaxed max-w-55 text-left">
                                     After 10 minutes, the room, the messages, and the history are permanently deleted.
                                 </p>
                             </div>
@@ -169,7 +171,7 @@ export default function LandingPage() {
 
                 {/* Features Grid */}
                 <section id="features" className="py-16 md:py-24 bg-zinc-50 dark:bg-zinc-900/50 border-y border-zinc-200 dark:border-zinc-800 px-4 scroll-mt-14">
-                    <div className="max-w-[1100px] mx-auto">
+                    <div className="max-w-275 mx-auto">
                         <div className="text-center mb-16 animate-on-scroll">
                             <span className="block text-[0.7rem] font-medium tracking-[0.15em] uppercase text-green-400 mb-4">
                                 [ what you get ]
@@ -230,8 +232,10 @@ export default function LandingPage() {
                         
                         <Link 
                             href="/lobby" 
-                            className="inline-flex items-center gap-2 bg-green-500 hover:bg-green-600 text-black font-semibold text-[0.9375rem] px-6 py-3 rounded-md shadow-[0_0_24px_rgba(34,197,94,0.3)] hover:shadow-[0_0_32px_rgba(34,197,94,0.5)] transition-all duration-200 hover:scale-[1.02]"
+                            className="btn-bracket inline-flex items-center gap-2 bg-zinc-950/80 text-green-400 font-semibold text-[0.9375rem] px-7 py-3"
                         >
+                            <span className="bc-tr" />
+                            <span className="bc-bl" />
                             Create a Room
                             <ArrowRight className="w-4 h-4" />
                         </Link>
@@ -241,7 +245,7 @@ export default function LandingPage() {
 
             {/* Footer */}
             <footer className="border-t border-zinc-200 dark:border-zinc-800 py-8 px-4 mt-auto">
-                <div className="max-w-[1100px] mx-auto flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left">
+                <div className="max-w-275 mx-auto flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left">
                     <div>
                         <div className="flex items-center gap-1.5 text-sm font-semibold tracking-tight justify-center md:justify-start mb-1">
                             <span className="text-green-500">&gt;</span>

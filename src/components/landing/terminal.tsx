@@ -119,17 +119,17 @@ export function TerminalAnimation() {
     }, [key, runSequence])
 
     return (
-        <div className="w-full max-w-[640px] mt-[72px] bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-lg overflow-hidden text-left shadow-2xl relative">
-            <div className="h-[36px] bg-zinc-50 dark:bg-zinc-800 border-b border-zinc-200 dark:border-zinc-800 px-4 flex items-center justify-between">
+        <div className="w-full max-w-160 mt-18 bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-lg overflow-hidden text-left shadow-2xl relative">
+            <div className="h-9 bg-zinc-50 dark:bg-zinc-800 border-b border-zinc-200 dark:border-zinc-800 px-4 flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                    <div className="w-[10px] h-[10px] rounded-full bg-zinc-400"></div>
-                    <div className="w-[10px] h-[10px] rounded-full bg-zinc-400"></div>
-                    <div className="w-[10px] h-[10px] rounded-full bg-zinc-400"></div>
+                    <div className="w-2.5 h-2.5 rounded-full bg-zinc-400"></div>
+                    <div className="w-2.5 h-2.5 rounded-full bg-zinc-400"></div>
+                    <div className="w-2.5 h-2.5 rounded-full bg-zinc-400"></div>
                 </div>
                 <div className="text-[11px] text-zinc-500 font-medium">flux://rm_x9k2p</div>
             </div>
 
-            <div className="p-5 min-h-[180px] sm:min-h-[220px] text-[13px] leading-[1.8] relative flex flex-col justify-end">
+            <div className="p-5 min-h-45 sm:min-h-55 text-[13px] leading-[1.8] relative flex flex-col justify-end">
                 <div
                     className={`absolute top-5 right-5 tabular-nums font-medium transition-colors duration-1000 ${
                         isDanger ? 'text-red-500 animate-pulse' : 'text-zinc-500'
