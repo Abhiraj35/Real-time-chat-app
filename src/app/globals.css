@@ -1,4 +1,6 @@
 @import "tailwindcss";
+@import 'fumadocs-ui/css/neutral.css';
+@import 'fumadocs-ui/css/preset.css';
 
 :root {
   --background: #f4f4f5;
@@ -81,4 +83,31 @@ body {
 }
 html {
   scroll-behavior: smooth;
+}
+
+/* Fumadocs-specific polish: preserve default structure, improve contrast/readability. */
+.fd-layout {
+  --fd-background: #f6f7f8;
+  --fd-card: #ffffff;
+  --fd-foreground: #111827;
+  --fd-muted-foreground: #4b5563;
+  --fd-border: #e5e7eb;
+}
+
+.fd-sidebar {
+  background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+  border-right-color: var(--fd-border);
+}
+
+.fd-sidebar [data-active="true"] {
+  font-weight: 600;
+  color: var(--fd-foreground);
+}
+
+.fd-sidebar a {
+  color: var(--fd-muted-foreground);
+}
+
+.fd-sidebar a:hover {
+  color: var(--fd-foreground);
 }

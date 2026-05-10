@@ -1,6 +1,7 @@
 ---
 title: Private Chat App Documentation
 description: Welcome to the Private Chat App documentation. Learn how to use and understand the codebase.
+order: 2
 ---
 
 # Welcome to Private Chat App
@@ -14,7 +15,6 @@ This documentation provides a comprehensive guide to understanding and using the
   <Card href="/docs/getting-started" title="Getting Started" description="Setup instructions for local development" />
   <Card href="/docs/folder-structure" title="Folder Structure" description="Guide to the codebase organization" />
   <Card href="/docs/key-concepts" title="Key Concepts" description="Advanced patterns and how the app works" />
-  <Card href="/docs/architecture" title="Architecture" description="Data flow and system design" />
 </Cards>
 
 

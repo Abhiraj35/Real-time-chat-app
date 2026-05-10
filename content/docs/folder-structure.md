@@ -1,9 +1,10 @@
 ---
 title: Folder Structure
 description: Guide to the codebase organization
+order: 3
 ---
 
-# 📂 Folder Structure
+# Folder Structure
 
 This document provides a guided tour of the codebase to help you find your way around.
 

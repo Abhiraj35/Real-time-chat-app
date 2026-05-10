@@ -1,9 +1,10 @@
 ---
-title: Key Concepts & Magic
+title: Key Conception Magic
 description: Advanced patterns and how the app works under the hood
+order: 4
 ---
 
-# 💡 Key Concepts & "Magic"
+# Key Concepts & "Magic"
 
 This project uses some advanced patterns to be simple and robust. Here is what is going on under the hood.
 

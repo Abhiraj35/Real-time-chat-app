@@ -27,6 +27,9 @@ export function baseOptions(): BaseLayoutProps {
 export function docsOptions() {
   return {
     ...baseOptions(),
+    themeSwitch: {
+      enabled: false,
+    },
     sidebar: {
       defaultOpenLevel: 1,
       banner: (
