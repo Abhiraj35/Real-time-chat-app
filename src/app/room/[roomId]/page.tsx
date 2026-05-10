@@ -91,12 +91,13 @@ const Page = () => {
         channels: [roomId],
         events: ["chat.message", "chat.destroy"],
         onData: ({ event }) => {
-            if (event === "chat.message") {
-                refetch()
-            }
-            if (event === "chat.destroy") {
-                router.push("/lobby?destroy=true")
-            }
+                if (event === "chat.message") {
+                    refetch()
+                    return
+                }
+                if (event === "chat.destroy") {
+                    router.push("/lobby?destroy=true")
+                }
         }
 
     })
@@ -159,13 +160,13 @@ const Page = () => {
                     </div>
 
                     <div className="flex-1 overflow-y-auto px-4 py-4 sm:px-5 sm:py-5">
-                {messages?.messages.length === 0 && (
+                {messages?.messages?.length === 0 && (
                     <div className="flex h-full items-center justify-center">
                         <p className="text-sm text-muted-foreground">No messages yet, start the conversation.</p>
                     </div>
                 )}
 
-                {messages?.messages.map((m) => (
+                {messages?.messages?.map((m) => (
                     <div key={m.id} className="mb-4 flex flex-col items-start last:mb-0">
                         <div className="max-w-[90%] sm:max-w-[80%]">
                             <div className="mb-1 flex items-baseline gap-3">

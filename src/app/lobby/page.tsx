@@ -3,7 +3,6 @@
 import { useUsername } from "@/hooks/use-username";
 import { client } from "@/lib/client";
 import { useMutation } from "@tanstack/react-query";
-import Crosshair from "@/components/Crosshair";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Suspense, useState } from "react";

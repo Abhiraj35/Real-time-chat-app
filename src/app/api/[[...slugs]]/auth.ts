@@ -20,7 +20,7 @@ export const authMiddleWare = new Elysia({
     })
     .derive({ as: "scoped" }, async ({ query, cookie }) => {
         const roomId = query.roomId
-        const token = cookie["x-auth-token"].value as string | undefined
+        const token = cookie["x-auth-token"]?.value as string | undefined
 
         if (!roomId || !token) {
             throw new AuthError("Missing roomid or token")
