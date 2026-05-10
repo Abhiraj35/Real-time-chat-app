@@ -3,14 +3,18 @@
 import { useUsername } from "@/hooks/use-username";
 import { client } from "@/lib/client";
 import { useMutation } from "@tanstack/react-query";
+import Crosshair from "@/components/Crosshair";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Suspense, useState } from "react";
+import Button from "@/components/ui/Button";
 
 const page = () => {
-  return <Suspense fallback={<div>Loading...</div>}>
-    <Lobby />
-  </Suspense>
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <Lobby />
+    </Suspense>
+  )
 }
 
 function Lobby() {
@@ -32,96 +36,137 @@ function Lobby() {
       }
     }
   })
+
+  const alert = wasDestroyed
+    ? {
+      title: "Room destroyed",
+      description: "All messages are deleted and the room is no longer accessible."
+    }
+    : error === "room-not-found"
+      ? {
+        title: "Room not found",
+        description: "The room ID does not exist or the room was removed."
+      }
+      : error === "room-full"
+        ? {
+          title: "Room full",
+          description: "This room reached its participant limit. Try another room."
+        }
+        : null
+
+  const handleJoinRoom = () => {
+    const normalizedRoomId = roomId.trim()
+    if (!normalizedRoomId) return
+    router.push(`/room/${normalizedRoomId}`)
+  }
+
+  const shellClass =
+    "rounded-xl border border-(--border) bg-[color-mix(in_srgb,var(--background)_92%,transparent)] p-5 backdrop-blur-sm md:p-6"
+
   return (
-    <main className="relative flex min-h-screen flex-col items-center justify-center p-4">
-      <Link
-        href="/"
-        className="absolute left-4 top-4 rounded-md border border-zinc-300 px-3 py-1.5 text-xs font-semibold uppercase tracking-wide text-zinc-700 transition-colors hover:bg-zinc-100 dark:border-zinc-700 dark:text-zinc-300 dark:hover:bg-zinc-900 sm:left-6 sm:top-6"
-      >
-        Back to landing
-      </Link>
-      <div className="w-full max-w-md space-y-8">
-        {wasDestroyed && (
-          <div className="bg-red-50 dark:bg-red-900/50 border border-red-200 dark:border-red-900 p-4 text-center rounded-md">
-            <p className="text-red-600 dark:text-red-500 text-sm font-bold">ROOM DESTROYED</p>
-            <p className="text-zinc-600 dark:text-zinc-500 text-xs mt-1">All messages have been deleted and the room is no longer accessible.</p>
+    <main className="min-h-screen w-full bg-background">
+      <div className="flex w-full justify-center border-b border-(--border) bg-[color-mix(in_srgb,var(--background)_90%,transparent)] backdrop-blur-md">
+        <div className="relative flex h-16 w-full max-w-6xl items-center justify-between border-x border-(--border) px-4 sm:px-8">
+          <div className="flex items-center gap-2 md:gap-3">
+            <div className="flex h-7 w-7 items-center justify-center rounded bg-linear-to-br from-primary to-accent-secondary md:h-8 md:w-8">
+              <div className="h-3 w-3 rotate-45 rounded-sm bg-foreground md:h-4 md:w-4" />
+            </div>
+            <p className="text-lg font-bold tracking-tight text-foreground md:text-xl">Flux</p>
           </div>
-        )}
-        {error === "room-not-found" && (
-          <div className="bg-red-50 dark:bg-red-900/50 border border-red-200 dark:border-red-900 p-4 text-center rounded-md">
-            <p className="text-red-600 dark:text-red-500 text-sm font-bold">ROOM NOT FOUND</p>
-            <p className="text-zinc-600 dark:text-zinc-500 text-xs mt-1">The room you are looking for does not exist or has been deleted.</p>
-          </div>
-        )}
-        {error === "room-full" && (
-          <div className="bg-red-50 dark:bg-red-900/50 border border-red-200 dark:border-red-900 p-4 text-center rounded-md">
-            <p className="text-red-600 dark:text-red-500 text-sm font-bold">ROOM FULL</p>
-            <p className="text-zinc-600 dark:text-zinc-500 text-xs mt-1">The room is full, please try again later.</p>
-          </div>
-        )}
-
-        <div className="text-center space-y-2">
-          <h1 className="text-2xl font-bold tracking-tight text-green-600 dark:text-green-500">
-            {">"} private_chat
-          </h1>
-          <p className="text-zinc-600 dark:text-zinc-500 text-sm">A Private,self-destructing chat room.</p>
+          <Button
+            href="/"
+            className="group relative text-xs font-medium uppercase tracking-widest text-muted-foreground transition-colors hover:bg-accent-secondary"
+          >
+            Back to landing
+          </Button>
         </div>
+      </div>
 
+      <section className="flex w-full justify-center px-4 py-10 sm:px-8">
+        <div className="relative w-full max-w-6xl bg-background px-5 py-8 sm:px-8 sm:py-10">
+          <div className="mx-auto w-full max-w-2xl">
+            <div className={shellClass}>
+              {alert && (
+                <div className="mb-5 border border-destructive/40 bg-destructive/10 p-3">
+                  <p className="text-xs font-semibold uppercase tracking-[0.12em] text-destructive">{alert.title}</p>
+                  <p className="mt-1 text-sm text-muted-foreground">{alert.description}</p>
+                </div>
+              )}
+              <div className="space-y-6">
+                <div className="space-y-3 text-center">
+                  <p className="text-[0.75rem] font-semibold uppercase tracking-[0.16em] text-muted-foreground">
+                    Secure lobby
+                  </p>
+                  <h1 className="text-3xl leading-[1.05] font-bold tracking-[-0.03em] text-foreground sm:text-4xl">
+                    Start a{" "}
+                    <span className="bg-linear-to-b from-primary to-accent-secondary bg-clip-text text-transparent">
+                      private
+                    </span>{" "}
+                    conversation.
+                  </h1>
+                  <p className="max-w-xl text-sm leading-[1.7] text-muted-foreground">
+                    Create a room in one click, share the ID, and chat in real time. Sessions are short-lived and designed to leave no trail.
+                  </p>
+                </div>
 
-        <div className="border border-zinc-200 dark:border-zinc-800 bg-white/50 dark:bg-zinc-900/50 p-6 backdrop-blur-md shadow-xl dark:shadow-none rounded-xl">
-          <div className="space-y-5">
-            <div className="space-y-2">
-              <label className="flex items-center text-zinc-600 dark:text-zinc-500">Your Identity</label>
+                <div className="border-t border-(--border) pt-5">
+                  <p className="text-xs font-semibold uppercase tracking-[0.12em] text-primary">Identity</p>
+                  <p className="mt-2 rounded-sm border border-(--border) bg-background px-3 py-2 font-mono text-sm text-foreground">
+                    {username}
+                  </p>
+                </div>
 
-              <div className="flex items-center gap-3">
-                <div className="flex-1 bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 p-3 text text-sm text-zinc-800 dark:text-zinc-400 font-mono rounded-md">
-                  {username}
+                <div className="space-y-3 border-t border-(--border) pt-5">
+                  <button
+                    disabled={isPending}
+                    onClick={() => createRoom()}
+                    className="inline-flex w-full items-center justify-center gap-2 rounded-sm border border-primary bg-primary px-6 py-2.5 text-sm font-semibold text-primary-foreground transition-all duration-180 hover:bg-accent-secondary disabled:cursor-not-allowed disabled:opacity-60"
+                  >
+                    {isPending ? (
+                      <>
+                        <div className="h-4 w-4 animate-spin rounded-full border-2 border-primary-foreground border-t-transparent" />
+                        <span>Creating room...</span>
+                      </>
+                    ) : (
+                      "Create a room"
+                    )}
+                  </button>
+                  <p className="text-xs text-muted-foreground">
+                    Room will expire automatically in 10 minutes.
+                  </p>
+                </div>
+
+                <div className="space-y-3 border-t border-(--border) pt-5">
+                  <label className="text-xs font-semibold uppercase tracking-[0.12em] text-muted-foreground">
+                    Join with room ID
+                  </label>
+                  <input
+                    value={roomId}
+                    onChange={(e) => setRoomId(e.target.value)}
+                    onKeyDown={(event) => {
+                      if (event.key === "Enter") {
+                        event.preventDefault()
+                        handleJoinRoom()
+                      }
+                    }}
+                    placeholder="Enter room id"
+                    type="text"
+                    className="w-full rounded-sm border border-(--border) bg-background px-3 py-2.5 text-sm text-foreground placeholder:text-muted-foreground outline-none transition-colors focus:border-primary"
+                  />
+                  <button
+                    disabled={!roomId.trim()}
+                    onClick={handleJoinRoom}
+                    className="inline-flex w-full items-center justify-center gap-2 rounded-sm border border-(--border) px-6 py-2.5 text-sm font-semibold text-foreground transition-all duration-180 hover:border-muted-foreground hover:bg-accent disabled:cursor-not-allowed disabled:opacity-50"
+                  >
+                    Join room
+                  </button>
                 </div>
               </div>
             </div>
-
-            <button
-              disabled={isPending}
-              onClick={() => createRoom()}
-              className="w-full bg-zinc-900 hover:bg-zinc-800 text-white dark:bg-zinc-100 dark:text-black dark:hover:bg-zinc-50 p-3 text-sm font-bold transition-colors mt-2 cursor-pointer disabled:opacity-50 flex items-center justify-center gap-2 rounded-md"
-            >
-              {isPending ? (
-                <>
-                  <div className="h-4 w-4 animate-spin rounded-full border-2 border-zinc-900 border-t-transparent" />
-                  <span>CREATING...</span>
-                </>
-              ) : (
-                "CREATE SECURE ROOM"
-              )}
-            </button>
-            <div className="flex items-center gap-2 my-4">
-              <div className="h-px bg-zinc-800 flex-1" />
-              <span className="text-xs text-zinc-500 font-mono">OR</span>
-              <div className="h-px bg-zinc-800 flex-1" />
-            </div>
-
-            <div className="space-y-2">
-              <label className="flex items-center text-zinc-500">Join via Room ID</label>
-              <input
-                value={roomId}
-                onChange={(e) => setRoomId(e.target.value)}
-                placeholder="Enter Room ID"
-                type="text"
-                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-md focus:border-zinc-700 focus:outline-none transition-colors text-zinc-800 dark:text-zinc-400 placeholder:text-zinc-700 p-3 text-sm"
-              />
-
-              <button
-                disabled={!roomId.trim()}
-                onClick={() => router.push(`/room/${roomId}`)}
-                className="w-full bg-zinc-800 text-zinc-400 p-3 text-sm font-bold hover:bg-zinc-700 hover:text-zinc-200 transition-colors cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                JOIN ROOM
-              </button>
-            </div>
           </div>
         </div>
-      </div>
+      </section>
     </main>
-  );
+  )
 }
 export default page
