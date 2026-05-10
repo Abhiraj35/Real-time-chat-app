@@ -33,8 +33,8 @@ const Navbar = () => (
     </div>
 
     <div className="flex items-center">
-      <Button href="#" className="hidden sm:inline-flex">
-        Browse Registry
+      <Button href="/lobby" className="hidden sm:inline-flex">
+        Lobby
       </Button>
     </div>
   </nav>
