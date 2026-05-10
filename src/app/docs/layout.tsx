@@ -5,7 +5,7 @@ import { docsOptions } from '@/lib/layout.shared';
 
 export default function Layout({ children }: LayoutProps<'/docs'>) {
   return (
-    <RootProvider theme={{ attribute: 'class' }}>
+    <RootProvider theme={{ attribute: 'class', forcedTheme: 'light', defaultTheme: 'light', enableSystem: false }}>
       <DocsLayout tree={source.getPageTree()} {...docsOptions()}>
         {children}
       </DocsLayout>
