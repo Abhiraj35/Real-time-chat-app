@@ -1,6 +1,7 @@
 ---
 title: Getting Started
 description: Setup instructions for local development
+order: 2
 ---
 
 # Getting Started
@@ -68,7 +69,7 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## 🛠️ Build for Production
+## Build for Production
 
 To create a production build:
 
