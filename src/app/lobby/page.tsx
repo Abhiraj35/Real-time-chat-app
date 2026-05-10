@@ -1,6 +1,5 @@
 'use client'
 
-import { ThemeToggle } from "@/components/theme-toggle";
 import { useUsername } from "@/hooks/use-username";
 import { client } from "@/lib/client";
 import { useMutation } from "@tanstack/react-query";
@@ -34,7 +33,13 @@ function Lobby() {
     }
   })
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center p-4">
+    <main className="relative flex min-h-screen flex-col items-center justify-center p-4">
+      <Link
+        href="/"
+        className="absolute left-4 top-4 rounded-md border border-zinc-300 px-3 py-1.5 text-xs font-semibold uppercase tracking-wide text-zinc-700 transition-colors hover:bg-zinc-100 dark:border-zinc-700 dark:text-zinc-300 dark:hover:bg-zinc-900 sm:left-6 sm:top-6"
+      >
+        Back to landing
+      </Link>
       <div className="w-full max-w-md space-y-8">
         {wasDestroyed && (
           <div className="bg-red-50 dark:bg-red-900/50 border border-red-200 dark:border-red-900 p-4 text-center rounded-md">
@@ -54,21 +59,6 @@ function Lobby() {
             <p className="text-zinc-600 dark:text-zinc-500 text-xs mt-1">The room is full, please try again later.</p>
           </div>
         )}
-
-        <div className="absolute top-4 right-15 flex items-center gap-4">
-          <Link href="/" className="text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-200 text-sm transition-colors">
-              Home
-          </Link>
-          <Link href="/docs" className="text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-200 text-sm transition-colors">
-              Docs
-          </Link>
-
-          <Link href="https://github.com/Abhiraj35/Real-time-chat-app" target="_blank"
-            rel="noopener noreferrer" className="text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-200 text-sm transition-colors">
-            GitHub
-          </Link>
-          <ThemeToggle />
-        </div>
 
         <div className="text-center space-y-2">
           <h1 className="text-2xl font-bold tracking-tight text-green-600 dark:text-green-500">
