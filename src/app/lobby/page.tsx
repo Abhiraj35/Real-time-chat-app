@@ -72,12 +72,13 @@ function Lobby() {
             </div>
             <p className="text-lg font-bold tracking-tight text-foreground md:text-xl">Flux</p>
           </div>
-          <Button
+          <Link
             href="/"
-            className="group relative text-xs font-medium uppercase tracking-widest text-muted-foreground transition-colors hover:bg-accent-secondary"
+            className="inline-flex items-center justify-center gap-1 rounded-sm border border-(--border) px-3 py-1.5 text-xs font-medium uppercase tracking-widest text-muted-foreground transition-colors hover:bg-primary hover:text-foreground sm:gap-2 sm:px-4 sm:py-2 sm:text-xs"
           >
-            Back to landing
-          </Button>
+            ← Back
+            <span className="hidden sm:inline">to Landing</span>
+          </Link>
         </div>
       </div>
 
