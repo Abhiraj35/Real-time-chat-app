@@ -19,6 +19,7 @@
     "fumadocs-core": "^16.4.8",
     "fumadocs-mdx": "^14.2.6",
     "fumadocs-ui": "^16.4.8",
+    "geist": "^1.7.0",
     "lenis": "^1.3.23",
     "mermaid": "^11.12.2",
     "nanoid": "^5.1.6",

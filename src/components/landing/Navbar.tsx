@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Menu, X } from "lucide-react";
 
 import Button from "@/components/ui/Button";
+import { pixelTriangleTheme } from "@/lib/fonts";
 
 const NAV_LINKS = [
   { href: "/docs", label: "Docs" },
@@ -33,7 +34,7 @@ const Navbar = () => {
             <Link
               key={link.href}
               href={link.href}
-              className="group relative text-sm font-medium text-muted-foreground transition-colors duration-200 hover:text-foreground"
+              className={`${pixelTriangleTheme.className} group relative text-sm font-medium text-muted-foreground transition-colors duration-200 hover:text-foreground`}
             >
               {link.label}
 
@@ -43,7 +44,7 @@ const Navbar = () => {
         </div>
 
         {/* Desktop CTA */}
-        <div className="hidden md:flex">
+        <div className={`${pixelTriangleTheme.className} hidden md:flex`}>
           <Button href="/lobby">Lobby</Button>
         </div>
 
@@ -71,13 +72,13 @@ const Navbar = () => {
                 key={link.href}
                 href={link.href}
                 onClick={() => setIsOpen(false)}
-                className="rounded-md px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
+                className={`${pixelTriangleTheme.className} rounded-md px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-foreground`}
               >
                 {link.label}
               </Link>
             ))}
 
-            <div className="pt-2">
+            <div className={`${pixelTriangleTheme.className} pt-2`}>
               <Button href="/lobby" className="w-full">
                 Lobby
               </Button>

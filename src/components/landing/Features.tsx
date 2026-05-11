@@ -1,3 +1,5 @@
+import { pixelTriangleTheme } from "@/lib/fonts";
+
 const FEATURES = [
   {
     title: "10-minute rooms",
@@ -22,7 +24,7 @@ const FEATURES = [
 const Features = () => (
   <section id="features" className="border-b border-(--border) px-4 py-18 md:px-8 md:py-24">
     <div className="mx-auto flex w-full max-w-5xl flex-col gap-10">
-      <div className="flex flex-col gap-4 md:max-w-2xl">
+      <div className={`${pixelTriangleTheme.className} flex flex-col gap-4 md:max-w-2xl}`}>
         <p className="text-[0.75rem] font-semibold tracking-[0.16em] text-muted-foreground uppercase">
           What you get
         </p>
@@ -35,7 +37,7 @@ const Features = () => (
         </h2>
       </div>
 
-      <ul className="grid grid-cols-1 gap-6 md:grid-cols-2">
+      <ul className={`${pixelTriangleTheme.className} grid grid-cols-1 gap-6 md:grid-cols-2`}>
         {FEATURES.map((feature, index) => (
           <li key={feature.title} className="border-t border-(--border) pt-5">
             <p className="mb-2 text-xs font-semibold tracking-[0.12em] text-primary uppercase">

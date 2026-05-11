@@ -1,3 +1,5 @@
+import { pixelTriangleTheme } from "@/lib/fonts";
+
 const STEPS = [
   {
     number: "01",
@@ -18,8 +20,8 @@ const STEPS = [
 
 const HowItWorks = () => (
   <section id="how-it-works" className="border-b border-(--border) px-4 py-18 md:px-8 md:py-24">
-    <div className="mx-auto grid w-full max-w-5xl gap-12 md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
-      <div className="flex flex-col gap-4">
+    <div className="mx-auto grid w-full max-w-5xl gap-12 md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] ">
+      <div className={`${pixelTriangleTheme.className} flex flex-col gap-4 `}>
         <p className="text-[0.75rem] font-semibold tracking-[0.16em] text-muted-foreground uppercase">
           How it works
         </p>
@@ -37,7 +39,7 @@ const HowItWorks = () => (
 
       <ol className="divide-y divide-(--border) border-y border-(--border)">
         {STEPS.map((step) => (
-          <li key={step.number} className="grid gap-3 py-6 sm:grid-cols-[auto_1fr] sm:gap-6">
+          <li key={step.number} className={`${pixelTriangleTheme.className} grid gap-3 py-6 sm:grid-cols-[auto_1fr] sm:gap-6 `}>
             <span className="text-2xl font-semibold tracking-[-0.02em] text-primary md:text-3xl">
               {step.number}
             </span>

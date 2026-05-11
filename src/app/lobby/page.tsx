@@ -2,6 +2,7 @@
 
 import { useUsername } from "@/hooks/use-username";
 import { client } from "@/lib/client";
+import { pixelTriangleTheme } from "@/lib/fonts";
 import { useMutation } from "@tanstack/react-query";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -63,7 +64,7 @@ function Lobby() {
     "rounded-xl border border-(--border) bg-[color-mix(in_srgb,var(--background)_92%,transparent)] p-5 backdrop-blur-sm md:p-6"
 
   return (
-    <main className="min-h-screen w-full bg-background">
+    <main className={`${pixelTriangleTheme.className} min-h-screen w-full bg-background`}>
       <div className="flex w-full justify-center border-b border-(--border) bg-[color-mix(in_srgb,var(--background)_90%,transparent)] backdrop-blur-md">
         <div className="relative flex h-16 w-full max-w-6xl items-center justify-between border-x border-(--border) px-4 sm:px-8">
           <div className="flex items-center gap-2 md:gap-3">
@@ -111,7 +112,7 @@ function Lobby() {
 
                 <div className="border-t border-(--border) pt-5">
                   <p className="text-xs font-semibold uppercase tracking-[0.12em] text-primary">Identity</p>
-                  <p className="mt-2 rounded-sm border border-(--border) bg-background px-3 py-2 font-mono text-sm text-foreground">
+                  <p className="mt-2 rounded-sm border border-(--border) bg-background px-3 py-2 text-sm text-foreground">
                     {username}
                   </p>
                 </div>

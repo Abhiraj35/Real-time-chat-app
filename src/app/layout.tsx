@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Provider } from "@/components/providers";
+import { pixelTriangleTheme } from "@/lib/fonts";
 
 export const metadata: Metadata = {
   title: "Flux",
@@ -14,7 +15,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="light" suppressHydrationWarning>
-      <body className="min-h-full bg-background text-foreground selection:bg-primary/30 selection:text-primary">
+      <body className={`${pixelTriangleTheme.className} min-h-full bg-background text-foreground selection:bg-primary/30 selection:text-primary`}>
         <Provider>{children}</Provider>
       </body>
     </html>
